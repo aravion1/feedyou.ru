@@ -1,19 +1,12 @@
 @extends('layouts.main')
 
-@section('title')
-    Список продуктов
-@endsection
-
-@section('search-action')
-    /products/search/1
-@endsection
 @section('search-value'){{$search ?? ''}}@endsection
 @section('content')
     @if(count($list) > 0)
     <div class="container">
         <div class="row">
-            <form method="GET" action="@yield('search-action')" class="form-inline d-flex flex-row mb-2">
-                <input class="form-control mr-sm-2" minlength="3" type="search" name="search" value="@yield('search-value')" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px" placeholder="Поиск продуктов"
+            <form method="GET" action="/products/search/1" class="form-inline d-flex flex-row mb-2">
+                <input class="form-control mr-sm-2" minlength="3" type="search" name="search" value="{{$search ?? ''}}" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px" placeholder="Поиск продуктов"
                        aria-label="Поиск продуктов">
                 <button class="btn btn-outline-info my-sm-0" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit">Поиск</button>
             </form>
@@ -21,11 +14,19 @@
         <div class="row">
             <nav>
                 <ul class="pagination pagination-sm justify-content-end align-items-center">
-                    @foreach($pagination as $page => $fields)
-                        <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                            <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                        </li>
-                    @endforeach
+                    @if(!empty($search))
+                        @foreach($pagination as $page => $fields)
+                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
+                                <a class="page-link" href="/products/search/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
+                            </li>
+                        @endforeach
+                    @else
+                        @foreach($pagination as $page => $fields)
+                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
+                                <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </nav>
         </div>
@@ -53,11 +54,19 @@
         <div class="row align-items-center">
             <nav aria-label="...">
                 <ul class="pagination pagination-sm justify-content-end">
-                    @foreach($pagination as $page => $fields)
-                        <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                            <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                        </li>
-                    @endforeach
+                    @if(!empty($search))
+                        @foreach($pagination as $page => $fields)
+                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
+                                <a class="page-link" href="/products/search/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
+                            </li>
+                        @endforeach
+                    @else
+                        @foreach($pagination as $page => $fields)
+                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
+                                <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </nav>
         </div>
