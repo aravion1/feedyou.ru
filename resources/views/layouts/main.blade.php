@@ -31,7 +31,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark p-2">
             <a class="navbar-brand" href="#">Накормим Вас!</a>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/products/1">Продукты
@@ -45,11 +48,6 @@
                               href="#">Рецепты (Скоро появится, пока в разработке)</span>
                     </li>
                 </ul>
-                <form method="GET" action="@yield('search-action')" class="form-inline d-flex flex-row">
-                    <input class="form-control mr-sm-2" minlength="3" type="search" name="search" value="@yield('search-value')" placeholder="Поиск продуктов"
-                           aria-label="Поиск продуктов">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
-                </form>
             </div>
         </nav>
     </div>
