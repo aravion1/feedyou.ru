@@ -21,25 +21,7 @@
                 <button class="btn btn-outline-info my-sm-0" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;" type="submit">Поиск</button>
             </form>
         </div>
-        <div class="row">
-            <nav>
-                <ul class="pagination pagination-sm justify-content-end align-items-center">
-                    @if(!empty($search))
-                        @foreach($pagination as $page => $fields)
-                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                                <a class="page-link" href="/products/search/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                            </li>
-                        @endforeach
-                    @else
-                        @foreach($pagination as $page => $fields)
-                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                                <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-            </nav>
-        </div>
+        @include('components.product_pagination')
         <div class="d-flex flex-row justify-content-center flex-wrap">
         @foreach(array_chunk($list, 5) as $row)
                 @foreach($row as $item)
@@ -61,25 +43,7 @@
                 @endforeach
         @endforeach
         </div>
-        <div class="row align-items-center">
-            <nav aria-label="...">
-                <ul class="pagination pagination-sm justify-content-end">
-                    @if(!empty($search))
-                        @foreach($pagination as $page => $fields)
-                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                                <a class="page-link" href="/products/search/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                            </li>
-                        @endforeach
-                    @else
-                        @foreach($pagination as $page => $fields)
-                            <li class="page-item {{$fields['isActive'] ? 'disabled' : ''}}">
-                                <a class="page-link" href="/products/{{$page . $fields['params']}}" tabindex="-1">{{$page}}</a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-            </nav>
-        </div>
+        @include('components.product_pagination')
 
     </div>
     @else
