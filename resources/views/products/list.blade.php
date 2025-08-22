@@ -15,6 +15,11 @@
     @if(count($list) > 0)
     <div class="container">
         <div class="row">
+            <div class="alert alert-primary" role="alert">
+                Внимание! Продолжая пользование сайтом вы автоматически соглашаетесь с <a href="/privacy/" target="_blank">Политикой конфиденциальности</a>
+            </div>
+        </div>
+        <div class="row">
             <form method="GET" action="/products/search/1" class="form-inline d-flex flex-row mb-2">
                 <input class="form-control mr-sm-2" minlength="3" type="search" name="search" value="{{$search ?? ''}}" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px" placeholder="Поиск продуктов"
                        aria-label="Поиск продуктов">
