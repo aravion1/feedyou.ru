@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
 Route::get('/', function () {
     return redirect('/products/1');
 });
