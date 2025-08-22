@@ -1,6 +1,16 @@
+@section('title')
+    {{$search ?? 'Накормим вас! список продуктов'}}
+@endsection
 @extends('layouts.main')
 
 @section('search-value'){{$search ?? ''}}@endsection
+
+@section('keywords')
+    {{$seo['keywords']}}
+@endsection
+@section('description')
+    {{$seo['description']}}
+@endsection
 @section('content')
     @if(count($list) > 0)
     <div class="container">
